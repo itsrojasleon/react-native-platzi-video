@@ -11,13 +11,12 @@ import Header from './components/header';
 export default class App extends React.Component {
   render() {
     return (
-      <View>
+      <Home>
         <Header />
-        <Home>
-          <Text>Something...</Text>
-        </Home>
+        <Text>Seeker</Text>
+        <Text>Categories</Text>
         <SuggestionList />
-      </View>
+      </Home>
     );
   }
 }
