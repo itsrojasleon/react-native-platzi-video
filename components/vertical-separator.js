@@ -8,7 +8,6 @@ const VerticalSeparator = ({ color }) => {
       {borderTopColor: color ? color : '#eaeaea'},
     ]}
     >
-      <Text>Separator</Text>
     </View>
   )
 }
