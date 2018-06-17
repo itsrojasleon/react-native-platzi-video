@@ -11,16 +11,23 @@ import SuggestionList from './containers/suggestion-list';
 import Header from './components/header';
 
 export default class App extends React.Component {
+  state = {
+    suggestionList: [],
+  }
   async componentDidMount() {
-    const movies = await API.getSuggestion(10);
+    const suggestionList = await API.getSuggestion(10);
+    this.setState(() => ({ suggestionList }));
   }
   render() {
+    const { suggestionList } = this.state;
     return (
       <Home>
         <Header />
         <Text>Seeker</Text>
         <Text>Categories</Text>
-        <SuggestionList />
+        <SuggestionList
+          list={suggestionList}
+        />
       </Home>
     );
   }
