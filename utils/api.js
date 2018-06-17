@@ -6,5 +6,10 @@ class Api {
     const { data } = await response.json();
     return data.movies;
   }
+  async getMovies() {
+    const response = await fetch(`${BASE_API}/list_movies.json`);
+    const { data } = await response.json();
+    return data.movies;
+  }
 }
 export default new Api();
