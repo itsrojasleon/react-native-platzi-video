@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const Layout = ({ title, children }) => (
+const LayoutSuggestions = ({ title, children }) => (
   <View style={styles.container}>
     <Text style={styles.title}>{title}</Text>
     <View>{children}</View>
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     fontWeight: 'bold',
-    marginLeft: 8,
+    marginLeft: 8
   }
 });
 
-export default Layout;
+export default LayoutSuggestions;
