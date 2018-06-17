@@ -4,7 +4,7 @@ import { View, Text, FlatList } from 'react-native';
 import Layout from '../components/layout-categories';
 import Empty from '../components/empty';
 import Separator from '../components/horizontal-separator';
-import Suggestion from '../components/suggestion';
+import Category from '../components/category';
 
 class CategoryList extends Component {
   renderEmpty() {
@@ -14,7 +14,7 @@ class CategoryList extends Component {
     return <Separator />
   }
   renderItem ({ item }) {
-    return <Suggestion {...item} />
+    return <Category {...item} />
   }
   keyExtractor = (item) => item.id.toString();
   render() {
