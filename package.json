@@ -19,7 +19,8 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "expo": "^27.0.1",
+    "@expo/videoplayer": "0.4.0",
+    "expo": "27.1.0",
     "react": "16.3.1",
     "react-native": "~0.55.2"
   }
