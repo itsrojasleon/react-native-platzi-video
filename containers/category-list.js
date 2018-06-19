@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
 
-import Layout from '../components/layout-categories';
+import Layout from '../components/categories-layout';
 import Empty from '../components/empty';
 import Separator from '../components/horizontal-separator';
 import Category from '../components/category';

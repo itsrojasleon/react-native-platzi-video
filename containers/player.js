@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { Video } from 'expo';
-import Layout from '../components/layout-player';
+import Layout from '../components/player-layout';
+import ControlLayout from '../components/control-layout';
+import PlayPause from '../components/play-pause';
 
 class Player extends Component {
   state = {
     isLoaded: false,
-    shouldPlay: true,
+    shouldPlay: false,
   }
 
   _handleVideoRef = component => {
@@ -19,9 +21,12 @@ class Player extends Component {
   _onLoad = ({ isLoaded }) => {
     this.setState(() => ({ isLoaded }));
   }
+  _playPause = () => {
+    this.setState((prevState) => ({ shouldPlay: !prevState.shouldPlay }))
+  }
 
   render() {
-    const { isLoaded } = this.state;
+    const { isLoaded, shouldPlay } = this.state;
     return (
       <Layout
         isLoaded={isLoaded}
@@ -32,8 +37,8 @@ class Player extends Component {
             volume={1.0}
             isMuted={false}
             resizeMode="cover"
-            shouldPlay={this.state.shouldPlay}
-            isLooping
+            shouldPlay={shouldPlay}
+            // isLooping
             style={styles.video}
             ref={this._handleVideoRef}
             isBuffering={this._isBuffering}
@@ -41,7 +46,18 @@ class Player extends Component {
           />
         }
         loader={
-          <ActivityIndicator color="red" />
+          <ActivityIndicator size="large" color="red" />
+        }
+        controls={
+          <ControlLayout>
+            <PlayPause
+              onPress={this.playPause}
+              paused={this.state.paused}
+            />
+            <Text>progress bar | </Text>
+            <Text>time left | </Text>
+            <Text>fullscreen | </Text>
+          </ControlLayout>
         }
       >
       </Layout>

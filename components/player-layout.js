@@ -1,18 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
-const LayoutPlayer = ({ video, loader, isLoaded }) => {
+const LayoutPlayer = ({ video, loader, isLoaded, controls }) => {
   return (
     <View style={styles.container}>
       <View style={styles.video}>
         {video}
       </View>
-      {!isLoaded
-        ? <View style={styles.overlay}>
-            {loader}
-          </View>
-        : null
-      }
+      {!isLoaded && <View style={styles.overlay}>{loader}</View>}
+      {controls}
     </View>
   )
 }
