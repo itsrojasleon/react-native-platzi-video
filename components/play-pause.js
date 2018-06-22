@@ -3,51 +3,66 @@ import {
   View,
   Text,
   StyleSheet,
+  Platform,
   TouchableHighlight,
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-const PlayPause = ({ playPause, paused }) => {
+const PlayPause = ({ playPause, paused, retry, restart }) => {
   return (
     <View>
-      <TouchableHighlight
-        onPress={playPause}
-        style={styles.container}
-        underlayColor="red"
-        hitSlop={{
-          left: 5,
-          top: 5,
-          bottom: 5,
-          right: 5,
-        }}
-      >
-      {!paused
-        ? <Text style={styles.button}>Play</Text>
-        : <Text style={styles.button}>Pause</Text>
-      }
-      </TouchableHighlight>
+      <View>
+        <TouchableHighlight
+          onPress={playPause}
+          style={styles.container}
+          underlayColor="transparent"
+          hitSlop={{
+            left: 5,
+            top: 5,
+            bottom: 5,
+            right: 5,
+          }}
+        >
+          <View>
+            {!paused && (
+              <Ionicons
+                name={Platform.OS === 'ios' ? 'ios-play' : 'md-play'}
+                size={60}
+                color="white"
+              />
+            )}
+            {paused && !retry && (
+              <Ionicons
+                name={Platform.OS === 'ios' ? 'ios-pause' : 'md-pause'}
+                size={60}
+                color="white"
+              />
+            )}
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={restart}
+          underlayColor="transparent"
+          hitSlop={{
+            left: 5,
+            top: 5,
+            bottom: 5,
+            right: 5,
+          }}
+        >
+          <View>
+            {retry && <MaterialIcons name="replay" size={60} color="white" />}
+          </View>
+        </TouchableHighlight>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  contaiener:{
-    justifyContent: 'center',
-    paddingHorizontal: 10,
-    height: 25,
-    marginRight: 10,
-    marginVertical: 5,
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: 'white',
-    backgroundColor: 'gray',
-  },
-  button: {
-    color: 'white',
-    fontSize: 10,
-    fontWeight: 'bold',
-  }
+
 });
 
 export default PlayPause;
