@@ -12,24 +12,23 @@ class Player extends Component {
   state = {
     isLoaded: false,
     shouldPlay: false,
-    durationMillis: null,
+    durationMillis: 0,
     positionMillis: 0,
     valueSlider: 0,
     value: 0,
     showControls: false,
   }
   _handleVideoRef = component => this._player = component
-
   _onLoad = ({ isLoaded, durationMillis }) => {
     this.setState(() => ({ isLoaded, durationMillis }));
   }
   _playPause = () => {
     if (this.state.showControls && this.state.shouldPlay) {
-      console.log('Click again to hide')
+      console.log('Click again to hide');
     }else {
       this.timer = setTimeout(() => {
         this.setState({ showControls: false });
-      }, 2000);
+      }, 3000);
     }
     this.setState((prevState) => ({
       shouldPlay: !prevState.shouldPlay,
@@ -59,31 +58,34 @@ class Player extends Component {
   _onError = (e) => {
     throw new Error("Isn't loading ", e)
   }
-
   _onChange = (value) => {
     this.setState(() => ({
       valueSlider: value,
     }));
   }
-  _onSliding = (e) => {
+  _onSliding = () => {
     this.setState((prevState) => ({
-      value: prevState.valueSlider
+      value: prevState.valueSlider,
     }));
     this._player.setPositionAsync(this.state.valueSlider);
   }
   _onPress = () => {
-    if (!this.state.showControls && this.state.shouldPlay) {
+    const { showControls, shouldPlay } = this.state;
+    if (!showControls && shouldPlay) {
       this.timer = setTimeout(() => {
         this.setState({showControls: false})
-      }, 2000)
+      }, 3000)
     }
     // It's not showing
-    if (!this.state.showControls) this.setState({ showControls: true });
+    if (!showControls) this.setState({ showControls: true });
     // It's Showing
     else this.setState({ showControls: false });
   }
+  _pressIn = () => {
+    console.log('Press In');
+  }
   componentWillUnmount() {
-    clearInterval(this.timer);
+    clearTimeout(this.timer);
   }
   render() {
     const {
@@ -139,6 +141,7 @@ class Player extends Component {
                 onChange={this._onChange}
                 onSliding={this._onSliding}
                 value={valueSlider}
+                pressIn={this._pressIn}
               />
             }
           />

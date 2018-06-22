@@ -1,8 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableHighlight, Slider, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Slider,
+  Platform,
+  TouchableHighlight,
+} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const ControlsBelow = ({ fullScreen, durationMillis, positionMillis, onChange, value, onSliding }) => {
+const ControlsBelow = ({ fullScreen, durationMillis, positionMillis, onChange, value, onSliding, pressIn }) => {
   const [ durationMMSS, duration ] = durationMillis;
   const [positionMMSS] = positionMillis;
     return (
@@ -85,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     height: 30,
     borderRadius: 50,
-  }
+  },
 });
 
 export default ControlsBelow;
