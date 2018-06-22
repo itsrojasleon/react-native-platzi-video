@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import API from './utils/api';
 
@@ -31,18 +33,20 @@ export default class App extends React.Component {
       categories,
     } = this.state;
     return (
-      <Home>
-        <Header />
-        <Text>Seeker</Text>
-        <Text>Categories</Text>
-        <Player />
-        <CategoryList
-          list={categories}
-        />
-        <SuggestionList
-          list={suggestionList}
-        />
-      </Home>
+      <Provider store={store}>
+        <Home>
+          <Header />
+          <Text>Seeker</Text>
+          <Text>Categories</Text>
+          <Player />
+          <CategoryList
+            list={categories}
+          />
+          <SuggestionList
+            list={suggestionList}
+          />
+        </Home>
+      </Provider>
     );
   }
 }

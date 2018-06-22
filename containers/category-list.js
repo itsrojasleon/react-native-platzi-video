@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
 import Layout from '../components/categories-layout';
 import Empty from '../components/empty';
@@ -35,4 +36,4 @@ class CategoryList extends Component {
     );
   }
 }
-export default CategoryList;
+export default connect()(CategoryList);
