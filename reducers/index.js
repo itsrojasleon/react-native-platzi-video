@@ -4,7 +4,7 @@ import { SET_SEGGESTION_LIST, SET_CATEGORIES_LIST } from '../actions';
 function suggestions(state = [], action) {
   switch (action.type) {
     case SET_SEGGESTION_LIST:
-      return state.concat(action.suggestions)
+      return action.suggestions;
     default:
       return state;
   }
@@ -12,7 +12,7 @@ function suggestions(state = [], action) {
 function categories(state = [], action) {
   switch (action.type) {
     case SET_CATEGORIES_LIST:
-      return state.concat(action.categories)
+      return action.categories;
     default:
       return state;
   }
