@@ -9,9 +9,7 @@ import { setSelectedMovie } from '../actions';
 import API from '../utils/api';
 
 class Search extends Component {
-  state = {
-    text: ''
-  }
+  state = { text: '' }
   handleSubmit = async () => {
     const movies = await API.searchMovie(this.state.text);
     this.props.setSelectedMovie(movies[0]);
