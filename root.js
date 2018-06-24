@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { setSuggestionList, setCategoryList } from './actions';
@@ -29,7 +28,6 @@ class Root extends Component {
       <Home>
         <Header />
         <Search />
-        <Text>Categories</Text>
         <CategoryList/>
         <SuggestionList/>
       </Home>
