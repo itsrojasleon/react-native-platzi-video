@@ -6,12 +6,14 @@ import { store, persistor } from './store';
 
 import Root from './root';
 
+import Loading from './components/loading';
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
         <PersistGate
-          loading={<Text>Loading...</Text>}
+          loading={<Loading />}
           persistor={persistor}
         >
           <Root />

@@ -1,6 +1,9 @@
 import API from '../utils/api';
+
 export const SET_SEGGESTION_LIST = 'SET_SEGGESTION_LIST';
 export const SET_CATEGORIES_LIST = 'SET_CATEGORIES_LIST';
+export const SET_SELECTED_MOVIE = 'SET_SELECTED_MOVIE';
+export const CLOSE_MOVIE = 'CLOSE_MOVIE';
 
 export const setSuggestionList = () => {
   return async (dispatch) => {
@@ -20,3 +23,10 @@ export const setCategoryList = () => {
     });
   }
 }
+export const setSelectedMovie = (movie) => ({
+  type: SET_SELECTED_MOVIE,
+  movie,
+});
+export const closeVideo  = () => ({
+  type: CLOSE_MOVIE,
+})

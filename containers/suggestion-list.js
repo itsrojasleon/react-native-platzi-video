@@ -7,17 +7,16 @@ import Empty from '../components/empty';
 import Separator from '../components/vertical-separator';
 import Suggestion from '../components/suggestion';
 
+import { setSelectedMovie } from '../actions';
+
 class SuggestionList extends Component {
-  renderEmpty() {
-    return <Empty
-      text="No suggestions 😱"
-    />
+  renderEmpty = () => <Empty text="No suggestions 😱" />
+  renderSeparator = () => <Separator />
+  renderItem = ({ item }) => {
+    return <Suggestion {...item} onPress={() => this.viewMovie(item)} />
   }
-  renderSeparator() {
-    return <Separator />
-  }
-  renderItem ({ item }) {
-    return <Suggestion {...item} />
+  viewMovie = (item) => {
+    this.props.setSelectedMovie(item);
   }
   keyExtractor = (item) => item.id.toString();
   render() {
@@ -40,4 +39,4 @@ class SuggestionList extends Component {
 const mapStateToProps = ({ suggestions }) => ({
   list: suggestions
  });
-export default connect(mapStateToProps)(SuggestionList);
+export default connect(mapStateToProps, { setSelectedMovie })(SuggestionList);

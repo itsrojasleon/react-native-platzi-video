@@ -6,6 +6,8 @@ import { setSuggestionList, setCategoryList } from './actions';
 
 // Containers (Smart Components)
 import Home from './containers/home';
+import Movie from './containers/movie';
+
 import SuggestionList from './containers/suggestion-list';
 import CategoryList from './containers/category-list';
 import Player from './containers/player';
@@ -17,8 +19,11 @@ class Root extends Component {
   componentDidMount() {
     this.props.setCategoryList();
     this.props.setSuggestionList();
-   }
+  }
   render() {
+    if (this.props.movie) {
+      return <Movie />
+    }
     return (
       <Home>
         <Header />
@@ -31,4 +36,6 @@ class Root extends Component {
     );
   }
 }
-export default connect(null, { setSuggestionList, setCategoryList })(Root);
+const mapStateToProps = ({ movie }) => ({ movie });
+
+export default connect(mapStateToProps, { setSuggestionList, setCategoryList })(Root);
