@@ -11,6 +11,7 @@ import Movie from './containers/movie';
 import SuggestionList from './containers/suggestion-list';
 import CategoryList from './containers/category-list';
 import Player from './containers/player';
+import Search from './containers/search';
 
 // Components (Dumb components)
 import Header from './components/header';
@@ -27,9 +28,8 @@ class Root extends Component {
     return (
       <Home>
         <Header />
-        <Text>Seeker</Text>
+        <Search />
         <Text>Categories</Text>
-        <Player />
         <CategoryList/>
         <SuggestionList/>
       </Home>
